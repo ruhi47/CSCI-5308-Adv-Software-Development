@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+<title>eAuction - Event Registration</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">  
+	body {
+	    font-family: Candara;   
+	    color: darkblue; 
+	}   
+	div {
+	    height: 2em;
+	    align-items: center;
+	    justify-content: center 
+	}
+	#textLabel {
+	    font-size: 15px;
+	    font-weight: bold;
+	}
+	input {
+	 font-family: Candara; 
+	 width: 300px;
+	 border: 1;
+	 line-height: 1.5;
+	}
+	em {
+	    font-size: 20px;
+	    font-weight: bold;
+	}
+	#button {
+	    font-family: Candara; 
+	    font-weight: bold;
+	    border-radius: 10px;
+	    text-align: center;
+	    font-size: 1rem;
+	    border: 0;
+	    background-color: #6495ed;
+	    line-height: 2;
+	}
+	#errorText {
+		color: red; 
+	}
+
+</style>
+</head>
+<body>
+    <div id="header"></div>
+    
+    <div id="fieldsContainer">
+    	<section>    	              		                      
+              <center>
+              	<p th:text="${message}" id="message"></p>
+              </center>                
+    	</section>
+    	<center>
+    		<tr>
+                <td><button id="button" type="button" style="width:305px"><a th:href="@{/user/loginSuccess}">Back to user dashboard</a></button></td>
+            </tr>
+    	</center>
+       </div>
+</body>
+</html>

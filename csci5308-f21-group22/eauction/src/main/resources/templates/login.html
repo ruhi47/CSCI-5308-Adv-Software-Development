@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>eAuction - Login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+body {
+	font-family: Candara;
+	color: darkblue;
+}
+
+div {
+	height: 2em;
+	align-items: center;
+	justify-content: center
+}
+
+input {
+	font-family: Candara;
+	width: 300px;
+	border: 1;
+	line-height: 1.5;
+}
+
+#textLabel {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+#errorSection {
+	font-family: Candara;
+	color: red;
+}
+
+#button {
+	font-family: Candara;
+	font-weight: bold;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 1rem;
+	border: 0;
+	background-color: #6495ed;
+	line-height: 2;
+}
+</style>
+</head>
+<body>
+
+	<div id="header"></div>
+
+	<div th:if="${param.error}" class="error" id="errorSection">
+		<center>
+			<p th:text="${session['SPRING_SECURITY_LAST_EXCEPTION'].message}"></p>
+		</center>
+	</div>
+
+	<div id="actionsContainer">
+		<center>
+			<p style="font-size: 30px;">Login</p>
+			<p>Fields marked with an * are mandatory</p>
+			<form method="post" th:action="@{/user/login}" th:object="${login}">
+				<table cellspacing="15px 15px">
+					<tr>
+						<td><label id="textLabel">Username/Email *</label></td>
+						<td><input type="text" id="username" th:field="*{username}"
+							placeholder="Email address" maxlength="50" size="35px"
+							tabindex="1" /></td>
+					</tr>
+					<tr>
+						<td><label id="textLabel">Password *</label></td>
+						<td><input type="password" id="password"
+							th:field="*{password}" placeholder="Password" maxlength="50"
+							size="35px" tabindex="2" /></td>
+					</tr>
+					<tr>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr>
+						<td><input id="button" type="submit" value="Login"
+							tabindex="3" /></td>
+						<td><button id="button" type="button" style="width: 305px">
+								<a th:href="@{/eAuctionHome}">eAuction Home</a>
+							</button></td>
+					</tr>
+					
+					<tr>
+						<td><a th:href="@{/user/forgotPassword}">Forgot Password?</a></td>
+					</tr>
+				</table>
+			</form>
+		</center>
+	</div>
+</body>
+</html>

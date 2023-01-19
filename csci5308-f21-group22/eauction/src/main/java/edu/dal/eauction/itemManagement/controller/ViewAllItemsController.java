@@ -1,0 +1,31 @@
+package edu.dal.eauction.itemManagement.controller;
+
+import java.util.List;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import edu.dal.eauction.itemManagement.dao.ItemDao;
+import edu.dal.eauction.itemManagement.dao.ItemDaoImplementation;
+import edu.dal.eauction.itemManagement.entities.Item;
+
+@Controller
+public class ViewAllItemsController {
+
+	private static final Logger LOG = LogManager.getLogger();
+	
+	@RequestMapping(value = { "/viewAllItems" })
+	public String getAllItems(@ModelAttribute(name="getItems") Item getItems,Model model) {
+		LOG.info("Viewing All Items");
+		ItemDao itemDaoImplement = new ItemDaoImplementation(); 
+		List<Item> itemList = itemDaoImplement.read();
+		LOG.info("Total Items : "+itemList.size());
+		model.addAttribute("itemList",itemList);
+		return "viewAllItems";
+	}
+
+}

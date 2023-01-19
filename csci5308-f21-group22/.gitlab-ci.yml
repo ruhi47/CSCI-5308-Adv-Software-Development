@@ -1,0 +1,72 @@
+variables:
+  GIT_STRATEGY: clone
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+before_script: 
+  - echo "Start of stage" 
+
+image: maven:latest
+
+cache:
+  paths:
+    - .m2/repository
+    - target
+
+stages:
+  - build
+  - test
+  - deploy
+
+build:
+  stage: build
+  tags:
+    - dalfcs_docker_kvm
+  script:
+    - echo "Start of build"
+    - echo `pwd`
+    - 'cd **/'
+    - echo `pwd`
+    - mvn -X package
+  only:
+    refs:
+      - branches
+
+test:
+  stage: test
+  tags:
+    - dalfcs_docker_kvm  
+  script:
+    - echo "Start of test"
+    - echo `pwd`
+    - 'cd **/'
+    - echo `pwd`
+    - mvn test
+    - ls -la target/surefire-reports/TEST*
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - "target/surefire-reports/TEST*"
+  only:
+    refs:
+      - branches
+    
+deploy:
+  stage: deploy
+  tags: 
+    - dalfcs_docker_kvm
+  image: ruby:latest
+  script:
+     - echo "Start of deploy"
+     - echo `pwd`
+     - 'cd **/'
+     - echo `pwd`
+     - apt-get update -qy
+     - apt-get install -y ruby-dev
+     - gem install dpl
+     - dpl --provider=heroku --app=$HEROKU_EAUCTION_APP_NAME --api-key=$HEROKU_API_KEY
+  only:
+  - develop
+
+after_script: 
+  - echo "End of stage"

@@ -1,0 +1,13 @@
+Item successfully put up for auction
+Dear %s,
+
+Your item has successfully been up for auction and it will be visible to other users now.
+
+Please find the details of the item below:
+
+Item Name: %s
+
+Description: %s
+
+Regards,
+eAuction Team

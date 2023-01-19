@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>eAuction - View Item Details</title>
+<style type="text/css">  
+	body {
+	    font-family: Candara;   
+	    color: darkblue; 
+	}   
+	div {
+	    align-items: center;
+	    justify-content: center 
+	}
+	img {
+		width: 200px;
+		height: 200px;
+		border: 5px solid #555;
+	}
+	#textLabel {
+	    font-size: 15px;
+	    font-weight: bold;
+	}
+	input {
+	 font-family: Candara; 
+	 width: 300px;
+	 border: 1;
+	 line-height: 1.5;
+	}
+	em {
+	    font-size: 20px;
+	    font-weight: bold;
+	}
+	#button {
+	    font-family: Candara; 
+	    font-weight: bold;
+	    border-radius: 10px;
+	    text-align: center;
+	    font-size: 1rem;
+	    border: 0;
+	    background-color: #6495ed;
+	    line-height: 2;
+	}
+	#errorText {
+		color: red; 
+	}
+
+</style>
+</head>
+<body>
+	<div>
+		<p>Please have a look at the image of the item below</p>
+		<img th:src="@{/images/{fileName}(fileName=${item.imageURL})}" th:alt=${item.imageURL} />
+	</div>
+	<br>
+	<div>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>ITEM NAME</th>
+				<th>BRAND NAME</th>
+				<th>ITEM DESCRIPTION</th>
+				<th>ITEM PURCHASE DATE</th>
+				<th>ITEM EXPIRY DATE</th>
+				<th>ITEM MINIMUM PRICE</th>
+				<th>ITEM STATUS</th>
+				<th>ITEM CATEGORY</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td th:text=${item.itemName}/>
+				<td th:text=${item.brandName}/>
+				<td th:text=${item.description}/>
+				<td th:text=${item.purchaseDate}/>
+				<td th:text=${item.expiryDate}/>
+				<td th:text=${item.minPrice}/>
+				<td th:text=${item.status}/>
+				<td th:text=${item.category}/>
+			</tr>
+		</tbody>
+	</table>
+	<center>
+		<button id="button" type="button" style="width: 305px">
+			<a th:href="@{/user/loginSuccess}">Back to User Dashboard</a>
+		</button>
+	</center>
+	</div>
+</body>
+</html>

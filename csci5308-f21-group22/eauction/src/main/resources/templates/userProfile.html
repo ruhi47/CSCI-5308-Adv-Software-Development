@@ -1,0 +1,81 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>eAuction - Admin Dashboard</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+body {
+	font-family: Candara;
+	color: darkblue;
+}
+
+#headerDiv {
+	display: flex;
+	height: 3em;
+	align-items: center;
+	justify-content: center;
+}
+
+div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+</style>
+</head>
+<body>
+
+	<div id="headerDiv">
+		<table width=600px>
+			<tr>
+				<td align=left><b>E Auction ADMIN Portal | User Profile</b></td>
+				<td align=right><a th:href="@{/logout}">Logout</a></td>
+			</tr>
+		</table>
+	</div>
+
+	<div>
+
+		<table class="table table-bordered table-striped">			
+			<tr>			
+				<td width=150px align=left>First Name</td>
+				<td><p th:text="${user.firstName}" ></p></td>
+			</tr>
+			
+			<tr>
+				<td width=150px align=left>Last Name</td>
+				<td><p th:text="${user.lastName}" ></p></td>
+			</tr>
+			
+			<tr>
+				<td width=200px align=left>Status</td>
+				<td><p th:text="${user.status}"></p></td>
+			</tr>
+			
+			<tr>
+				<td width=200px align=left>Last Logged In date</td>
+				<td><p th:text="${user.lastSigninDate}"></p></td>
+			</tr>
+			
+			<tr>
+				<td width=200px align=left>Credits</td>
+				<td><p th:text="${user.credits}"></p></td>
+			</tr>
+					
+		</table>
+	</div>
+	
+	
+	<div>
+			<br><br><br><br><br><br>
+		<table width=300px>
+			<tr>
+				<td align=left>
+					<a th:href="@{/admin/markFraud}">Mark Fraud</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

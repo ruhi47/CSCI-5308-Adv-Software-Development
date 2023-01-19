@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>eAuction - Dashboard</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+body {
+	font-family: Candara;
+	color: darkblue;
+}
+
+div {
+	height: 2em;
+	align-items: center;
+	justify-content: center
+}
+#updateMessage {
+	font-family: Candara;
+	color: green;
+}
+</style>
+</head>
+<body>
+	<div id="headerDiv">
+		<center>
+			<table width=600px cellspacing="15px 15px">
+				<tr>
+					<td align=left>Welcome</td>
+					<td align=right><a th:href="@{/logout}">Logout</a></td>
+				</tr>
+			</table>
+		</center>
+	</div>
+	<section id="updateSection">
+		<center>
+			<p th:text="${updateMessage}" id="updateMessage"></p>
+		</center>
+	</section>
+	<div>
+		<table cellspacing="15px 15px" cellpadding="60px 15px">
+			<tr>
+				<td>Items
+					<ul>
+						<li><a th:href="@{/addItems}">Add Items</a></li>
+						<li><a th:href="@{/viewAllItems}">View All Items</a></li>
+						<li><a th:href="@{/viewItemsCreatedByYou}">View Items Added by You</a></li>
+						<li><a th:href="@{/viewOtherItems}">View Other Items</a></li>
+						<li><a th:href="@{/viewCategories}">View All Items by Category</a></li>
+					</ul>
+				</td>
+				<td>Events
+					<ul>
+						<li><a th:href="@{/viewEvents}">Events Created By You</a></li>
+						<li><a th:href="@{/subscribedEvents}">View events subscribed by you</a></li>
+						<li><a th:href="@{/pastEvents}">View past events subscribed by you</a></li>
+						<li><a th:href="@{/upcomingEvents}">View upcoming events subscribed by you</a></li>
+					</ul>
+				</td>
+				<td>Biding
+					<ul>
+						<li><a th:href="@{/pastBidingEvents}">View Past Biding Events</a></li>
+						<li><a th:href="@{/upcomingBidingEvents}">View Upcoming Biding Events</a></li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

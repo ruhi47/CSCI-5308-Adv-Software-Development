@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>eAuction - View All Items By Category</title>
+<style type="text/css">  
+	body {
+	    font-family: Candara;   
+	    color: darkblue; 
+	}   
+	div {
+	    height: 2em;
+	    align-items: center;
+	    justify-content: center 
+	}
+	#textLabel {
+	    font-size: 15px;
+	    font-weight: bold;
+	}
+	input {
+	 font-family: Candara; 
+	 width: 300px;
+	 border: 1;
+	 line-height: 1.5;
+	}
+	em {
+	    font-size: 20px;
+	    font-weight: bold;
+	}
+	#button {
+	    font-family: Candara; 
+	    font-weight: bold;
+	    border-radius: 10px;
+	    text-align: center;
+	    font-size: 1rem;
+	    border: 0;
+	    background-color: #6495ed;
+	    line-height: 2;
+	}
+	#errorText {
+		color: red; 
+	}
+
+</style>
+</head>
+<body>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>ITEM NAME</th>
+				<th>BRAND NAME</th>
+				<th>ITEM MINIMUM PRICE</th>
+				<th>ITEM STATUS</th>
+				<th>ITEM CATEGORY</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="itemList: ${itemList}">
+				<td th:text=${itemList.itemName}/>
+				<td th:text=${itemList.brandName}/>
+				<td th:text=${itemList.minPrice}/>
+				<td th:text=${itemList.status}/>
+				<td th:text=${itemList.category}/>
+				<td><button id="button" type="submit" style="width:120px"><a th:href="@{/selectItem/{id}(id=${itemList.itemID})}">View Item Details</a></button></td>
+			</tr>
+		</tbody>
+	</table>
+	<center>
+		<button id="button" type="button" style="width: 305px">
+			<a th:href="@{/user/loginSuccess}">Back to User Dashboard</a>
+		</button>
+	</center>
+</body>
+</html>

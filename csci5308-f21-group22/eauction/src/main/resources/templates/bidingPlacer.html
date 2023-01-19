@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>eAuction - Biding Placer</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style type="text/css">
+body {
+	font-family: Candara;
+	color: darkblue;
+}
+
+#headerDiv {
+	display: flex;
+	height: 5em;
+	align-items: center;
+	justify-content: center;
+}
+input {
+	 font-family: Candara;
+	 width: 300px;
+	 border: 1;
+	 line-height: 1.5;
+	}
+#errorSection {
+	font-family: Candara;
+	color: red;
+}
+</style>
+</head>
+<body>
+
+<div id="actionsContainer">
+    <center>
+        <section id="errorSection">
+            <center>
+                <p th:text="${message}" id="errorText"></p>
+            </center>
+        </section>
+        <form id="myform" method="post" th:action="@{/bid/place/{id}/{amount}(id=${event.eventId}, amount=${event.minAmount})}"  th:object="${biding}">
+            <table cellspacing="15px 15px">
+                <tr>
+                    <td><label>Event Details</label></td>
+                </tr>
+                <tr>
+                    <td><label>Event Id</label></td>
+                    <td th:text=${event.eventId}></td>
+                </tr>
+                <tr>
+                    <td><label>Minimum Bid Value: </label></td>
+                    <td th:text=${event.minAmount}></td>
+                </tr>
+                <tr>
+                    <td><input type="text" id="amount"
+                               th:field="*{bidingAmount}" placeholder="Amount" maxlength="50"
+                               size="35px" tabindex="2" /></td>
+                    <td><input type="text" id="comment"
+                               th:field="*{optionalComments}" placeholder="Optional Comments" maxlength="50"
+                               size="35px" tabindex="2" /></td>
+                </tr>
+                <tr>
+                    <td><input id="button" type="submit" value="Place Bid"
+                               tabindex="3" /></td>
+                    <td><p th:text="${errorMinAmount}"></p></td>
+                </tr>
+            </table>
+        </form>
+    </center>
+</div>
+</body>
+</html>

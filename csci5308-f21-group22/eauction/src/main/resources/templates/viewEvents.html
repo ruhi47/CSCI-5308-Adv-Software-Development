@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>eAuction - View Events</title>
+<style type="text/css">
+body {
+	font-family: Candara;
+	color: darkblue;
+}
+
+div {
+	height: 2em;
+	align-items: center;
+	justify-content: center
+}
+
+#textLabel {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+input {
+	font-family: Candara;
+	width: 300px;
+	border: 1;
+	line-height: 1.5;
+}
+
+em {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#button {
+	font-family: Candara;
+	font-weight: bold;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 1rem;
+	border: 0;
+	background-color: #6495ed;
+	line-height: 2;
+}
+
+#errorText {
+	color: red;
+}
+</style>
+</head>
+<body>
+	<table class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>Event Start Time</th>
+				<th>Event End Time</th>
+				<th>Minimum Bid Amount</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="eventList: ${eventList}">
+				<td th:text=${eventList.startTime} />
+				<td th:text=${eventList.endTime} />
+				<td th:text=${eventList.minAmount} />
+				<td><button id="button" type="submit" style="width: 305px">
+						<a th:href="@{/deleteEvent/{id}(id=${eventList.eventId})}">Delete
+							Event</a>
+					</button></td>
+			</tr>
+			<center>
+				<tr>
+					<td><button id="button" type="button" style="width: 305px">
+							<a th:href="@{/user/loginSuccess}">Back to user dashboard</a>
+						</button></td>
+				</tr>
+			</center>
+		</tbody>
+	</table>
+</body>
+</html>

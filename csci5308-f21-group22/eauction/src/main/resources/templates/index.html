@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>eAuction - Welcome</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style type="text/css">     
+    body {
+        font-family: Candara;   
+        color: darkblue; 
+    }  
+    div {
+        display: flex;
+        height: 7em;
+        align-items: center;
+        justify-content: center 
+    }
+</style>
+</head>
+<body>
+
+    <div id="header">
+        <section>    
+        	<p th:text="${message}"></p>                          
+    	</section>
+    </div>
+
+    <div id="messageContainer">
+        <p style="font-size: 30px;">Welcome to e Auction System</p>
+    </div>
+
+    <div id="actionsContainer">
+        <table cellpadding="100px">
+            <td><a th:href="@{/userRegistration}">Register</a></td>
+            <td><a th:href="@{/userLogin}">Login</a></td>  
+        </table>
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,13 @@
+Auction Event subscription successful
+Hi %s,
+
+Congratulations, you have successfully subscribed for the below auction event.
+
+Item Name: %s
+Event start time: %s
+Event end time: %s
+
+Your remaining credits are %s.
+
+Regards,
+eAuction Team

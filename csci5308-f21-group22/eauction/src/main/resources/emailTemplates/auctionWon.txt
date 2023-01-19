@@ -1,0 +1,16 @@
+Auction Event won
+Hi %s,
+
+Congratulations, you have won this auction with your bid.
+Below are the details of your invoice.
+
+					AUCTION DETAILS
+
+Event Date: %s
+Item won: %s
+Item cost: %s
+
+Remaining credits: %s.
+
+Regards,
+eAuction Team

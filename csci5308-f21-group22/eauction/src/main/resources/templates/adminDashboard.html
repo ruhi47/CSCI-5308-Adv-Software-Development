@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>eAuction - Admin Dashboard</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+body {
+	font-family: Candara;
+	color: darkblue;
+}
+
+#headerDiv {
+	display: flex;
+	height: 3em;
+	align-items: center;
+	justify-content: center;
+}
+
+div {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+</style>
+</head>
+<body>
+
+	<div id="headerDiv">
+		<table width=600px>
+			<tr>
+				<td align=left><b>E Auction ADMIN Portal</b></td>
+				<td align=right><a th:href="@{/logout}">Logout</a></td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<form th:action="@{/admin/searchUser}">
+			<table cellspacing="15px 15px">
+				<tr>
+					<td align=left>
+						<label id="textLabel">User's email *</label>
+					</td>
+					<td align=left>
+						<input type="text" id="username" th:name="email" placeholder="Email address" maxlength="50" size="35px"	tabindex="1" />
+					</td>						
+					<td align=right>
+						<input id="button" type="submit" value="Search User" tabindex="2" />
+					</td>
+				</tr>
+			</table>
+		</form>
+		<br>
+		<form th:action="@{/user/viewDetails}">
+			<table cellspacing="15px 15px">
+				<tr>
+					<td align=left>
+						<label id="textLabel">User's email *</label>
+					</td>
+					<td align=left>
+						<input type="text" id="username" th:name="email" placeholder="Email address" maxlength="50" size="35px"	tabindex="1" />
+					</td>
+					<td align=right>
+						<input id="button" type="submit" value="View User Details" tabindex="2" />
+					</td>	
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div>
+		<table width=300px>
+			<tr>
+				<td align=left>
+					<a th:href="@{/admin/users(status='ACTIVE')}">Active Users</a>
+				</td>
+				<td align=right>
+					<a th:href="@{/admin/users(status='FRAUD')}">Fraud Users</a>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div>
+		<table class="table table-bordered table-striped">
+			<thead>
+				<tr>
+					<th width=150px align=left>First Name</th>
+					<th width=150px align=left>Last Name</th>
+					<th width=200px align=left>Email</th>
+					<th width=100px align=left>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="users: ${users}">
+					<td th:text=${users.firstName} />
+					<td th:text=${users.lastName} />
+					<td th:text=${users.email} />
+					<td th:text=${users.status} />
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+</body>
+</html>

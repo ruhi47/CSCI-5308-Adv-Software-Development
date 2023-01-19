@@ -1,0 +1,11 @@
+eAuction Registration successful
+Hi %s,
+
+Congratulations, you have been successfully registered with us.
+
+You can now use our selling and bidding features.
+
+You have gained an initial credit of %s upon sign.
+
+Regards,
+eAuction Team

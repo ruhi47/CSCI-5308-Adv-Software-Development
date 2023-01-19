@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+<title>eAuction - addItems</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">  
+	body {
+	    font-family: Candara;   
+	    color: darkblue; 
+	}   
+	div {
+	    height: 2em;
+	    align-items: center;
+	    justify-content: center 
+	}
+	#textLabel {
+	    font-size: 15px;
+	    font-weight: bold;
+	}
+	input {
+	 font-family: Candara; 
+	 width: 300px;
+	 border: 1;
+	 line-height: 1.5;
+	}
+	em {
+	    font-size: 20px;
+	    font-weight: bold;
+	}
+	#button {
+	    font-family: Candara; 
+	    font-weight: bold;
+	    border-radius: 10px;
+	    text-align: center;
+	    font-size: 1rem;
+	    border: 0;
+	    background-color: #6495ed;
+	    line-height: 2;
+	}
+	#errorText {
+		color: red; 
+	}
+
+</style>
+</head>
+<body>
+    <div id="header"></div>
+    
+    <div id="fieldsContainer">
+    	<section>    	              		                      
+              <center>
+              	<p th:text="${message}" id="errorText"></p>
+              </center>                
+    	</section>
+        <center>
+            <em>Add New Item</em>
+            <p>Fields marked with an * are mandatory</p>        
+            <form method="post" th:action="@{/items/add}"  th:object="${newItem}">   
+                <table cellspacing="15px 15px">                	
+                    <tr>
+                       	<td><label id="textLabel">Item Name *</label></td>
+                       	<td><input type="text" id="itemName" name="itemName" placeholder="Item Name" maxlength="50" tabindex="1" /></td>
+                    </tr>
+                    
+                    <tr>
+                       	<td><label id="textLabel">Brand Name</label></td>
+                    	<td><input type="text" id="brandName" name="brandName" placeholder="Brand Name" maxlength="50" size="35px" tabindex="2" />
+                    </tr>
+                    
+                    <tr>
+                       	<td><label id="textLabel">Description *</label></td>
+                    	<td><input type="text" id="description" name="description" placeholder="Short Description" maxlength="50" size="35px" tabindex="3" />
+                    </tr>
+                        
+                    <tr>
+                        <td><label id="textLabel">Purchase Date</label></td>
+                        <td><input type="date" id="purchaseDate" name="purchaseDate" tabindex="4" /></td>                
+                     </tr>
+                        
+                    <tr>
+                        <td><label id="textLabel">Expiry Date</label></td>
+                        <td><input type="date" id="expiryDate" name="expiryDate" tabindex="5" /></td>                
+                    </tr>   
+                                            
+                    <tr>
+                        <td><label id="textLabel">Minimum Price *</label></td>
+                        <td><input type="number" step="any" id="minPrice" name="minPrice" placeholder="Minimum Price of Item" maxlength="50" size="35px" tabindex="6" /></td>                
+                    </tr>
+ 
+                    <tr>
+                    	<td><label id="textLabel">Item Category *</label></td>
+                    	<td size="35px" tabindex="7" />
+                    		<select id="category" name="category">
+                    			<option th:each="categoryList: ${categoryList}" th:value=${categoryList} th:text=${categoryList}></option>
+                    		</select>
+                    	</td>
+                    </tr>
+
+                    <tr>
+                        <td><label id="textLabel">Attach Item Image *</label></td>
+                        <td><input type="file" id="imageURL" name="imageURL" accept="image/png, image/jpeg" size="35px" tabindex="8" /></td>                
+                    </tr>
+
+                    <tr>
+                        <td><input id="button" type="submit" value="Add Item" tabindex="9" /></td>
+                        <td><button id="button" type="button" style="width:305px"><a th:href="@{/viewAllItems}">View All Items</a></button></td>
+                    </tr>                      
+                 </table>  
+             </form>
+         </center>
+         
+         <center>
+			<button id="button" type="button" style="width: 305px">
+				<a th:href="@{/user/loginSuccess}">Back to User Dashboard</a>
+			</button>
+		</center> 
+     </div>
+</body>
+</html>

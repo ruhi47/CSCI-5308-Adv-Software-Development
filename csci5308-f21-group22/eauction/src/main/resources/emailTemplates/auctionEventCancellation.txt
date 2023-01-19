@@ -1,0 +1,10 @@
+Auction Event cancelled
+Hi %s,
+
+We regret to inform you that the below auction event you subscribed to was cancelled.
+
+Item: %s
+Event Date: %s
+
+Regards,
+eAuction Team

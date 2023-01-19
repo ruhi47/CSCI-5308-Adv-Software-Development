@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+<title>eAuction - Registration</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">  
+	body {
+	    font-family: Candara;   
+	    color: darkblue; 
+	}   
+	div {
+	    height: 2em;
+	    align-items: center;
+	    justify-content: center 
+	}
+	#textLabel {
+	    font-size: 15px;
+	    font-weight: bold;
+	}
+	input {
+	 font-family: Candara; 
+	 width: 300px;
+	 border: 1;
+	 line-height: 1.5;
+	}
+	em {
+	    font-size: 20px;
+	    font-weight: bold;
+	}
+	#button {
+	    font-family: Candara; 
+	    font-weight: bold;
+	    border-radius: 10px;
+	    text-align: center;
+	    font-size: 1rem;
+	    border: 0;
+	    background-color: #6495ed;
+	    line-height: 2;
+	}
+	#errorText {
+		color: red; 
+	}
+
+</style>
+</head>
+<body>
+    <div id="header"></div>
+    
+    <div id="fieldsContainer">
+    	<section>    	              		                      
+              <center>
+              	<p th:text="${message}" id="errorText"></p>
+              </center>                
+    	</section>
+        <center>
+            <em>New user Registration</em>
+            <p>Fields marked with an * are mandatory</p>        
+            <form method="post" th:action="@{/user/register}"  th:object="${newUser}">   
+                <table cellspacing="15px 15px">                	
+                    <tr>
+                        <td><label id="textLabel">First Name *</label></td>
+                        <td><input type="text" id="firstName" th:field="*{firstName}" placeholder="First Name" maxlength="50" tabindex="1" /></td>
+                    </tr>
+                    <tr>
+                        <td><label id="textLabel">Last Name *</label></td>
+                        <td><input type="text" id="lastName" th:field="*{lastName}" placeholder="Last Name" maxlength="50" size="35px" tabindex="2" />
+                        </tr>
+                        <tr>
+                            <td><label id="textLabel">Date of Birth *</label></td>
+                            <td><input type="date" id="dateOfBirth" th:field="*{dateOfBirth}" tabindex="3" /></td>                
+                        </tr>
+                        <tr>
+                            <td><label id="textLabel">Email *</label></td>
+                            <td><input type="text" id="email" th:field="*{email}" placeholder="Email address" maxlength="50" size="35px" tabindex="4" /></td>                
+                        </tr>
+
+                        <tr>
+                            <td><label id="textLabel">Address Line 1 *</label></td>
+                            <td><input type="text" id="addressLine1" th:field="*{addressLine1}" placeholder="Address Line 1" maxlength="50" size="35px" tabindex="5" /></td>                
+                        </tr>
+
+                        <tr>
+                            <td><label id="textLabel">Address Line 2</label></td>
+                            <td><input type="text" id="addressLine2" th:field="*{addressLine2}" placeholder="Address Line 1" maxlength="50" size="35px" tabindex="6" /></td>                
+                        </tr>
+
+                        <tr>
+                            <td><label id="textLabel">City *</label></td>
+                            <td><input type="text" id="city" th:field="*{city}" placeholder="City" maxlength="50" size="35px" tabindex="7" /></td>                
+                        </tr>
+                        
+                        <tr>
+                            <td><label id="textLabel">Province *</label></td>
+                            <td><input type="text" id="province" th:field="*{province}" placeholder="Province" maxlength="50" size="35px" tabindex="8" /></td>                
+                        </tr>
+
+                        <tr>
+                            <td><label id="textLabel">Zip Code *</label></td>
+                            <td><input type="text" id="zipCode" th:field="*{zipCode}" placeholder="Zip Code" maxlength="50" size="35px" tabindex="9" /></td>                
+                        </tr>
+
+                        <tr>
+                            <td><label id="textLabel">Country *</label></td>
+                            <td><input type="text" id="country" th:field="*{country}" placeholder="Country" maxlength="50" size="35px" tabindex="10" /></td>                
+                        </tr>
+
+                        <tr>
+                            <td><label id="textLabel">Password *</label></td>
+                            <td><input type="password" id="password" th:field="*{password}" placeholder="Password" maxlength="50" size="35px" tabindex="11" /></td>                
+                        </tr>
+                        <tr>
+                            <td><label id="textLabel">Confirm Password *</label></td>
+                            <td><input type="password" id="confirmPassword" th:field="*{confirmedPassword}" placeholder="Confirm Password" size="35px" tabindex="12"/></td>                
+                        </tr>
+
+                        <tr>
+                           <td><input id="button" type="submit" value="Register" tabindex="13" /></td>
+                           <td><button id="button" type="button" style="width:305px"><a th:href="@{/eAuctionHome}">eAuction Home</a></button></td>
+                       </tr>
+                       
+                   </table>  
+               </form>
+           </center>
+       </div>
+</body>
+</html>

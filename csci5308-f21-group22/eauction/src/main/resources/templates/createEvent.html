@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>eAuction - createEvent</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">
+body {
+	font-family: Candara;
+	color: darkblue;
+}
+
+div {
+	height: 2em;
+	align-items: center;
+	justify-content: center
+}
+
+#textLabel {
+	font-size: 15px;
+	font-weight: bold;
+}
+
+input {
+	font-family: Candara;
+	width: 300px;
+	border: 1;
+	line-height: 1.5;
+}
+
+em {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#button {
+	font-family: Candara;
+	font-weight: bold;
+	border-radius: 10px;
+	text-align: center;
+	font-size: 1rem;
+	border: 0;
+	background-color: #6495ed;
+	line-height: 2;
+}
+
+#errorText {
+	color: red;
+}
+</style>
+</head>
+<body>
+	<div id="header"></div>
+
+	<div id="fieldsContainer">
+		<section>
+			<center>
+				<p th:text="${message}" id="errorText"></p>
+			</center>
+		</section>
+		<center>
+			<em>New Event Creation</em>
+			<p>Fields marked with an * are mandatory</p>
+			<form method="post" th:action="@{/event/create/}"
+				th:object="${newEvent}">
+				<table cellspacing="15px 15px">
+					<tr>
+						<td><label id="textLabel">Start Date And Time *</label></td>
+						<td><input type="datetime-local" id="startTime"
+							name="startTime" placeholder="Start Time" size="35px"
+							tabindex="2" />
+					</tr>
+					<tr>
+						<td><label id="textLabel">End Date and Time *</label></td>
+						<td><input type="datetime-local" id="endTime" name="endTime"
+							placeholder="End Time" size="35px" tabindex="3" /></td>
+					</tr>
+					<tr>
+						<td><input id="button" type="submit" value="Create Event"
+							tabindex="4" /></td>
+						<td><button id="button" type="button" style="width: 305px">
+								<a th:href="@{/items}">items</a>
+							</button></td>
+					</tr>
+					<center>
+						<tr>
+							<td><button id="button" type="button" style="width: 305px">
+									<a th:href="@{/user/loginSuccess}">Back to user dashboard</a>
+								</button></td>
+						</tr>
+					</center>
+				</table>
+			</form>
+		</center>
+	</div>
+</body>
+</html>
